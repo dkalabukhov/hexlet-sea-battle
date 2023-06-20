@@ -3,12 +3,40 @@
 
 import readlineSync from 'readline-sync';
 
+
+
+
+console.log(' ');
+console.log('///////////////////////////////////////////////////////////');
+console.log('//////////////// М О Р С К О Й   Б О Й ////////////////////');
+console.log('///////////////////////////////////////////////////////////');
+console.log('///////////////////// версия 0.4 //////////////////////////');
+console.log('///////////////////////////////////////////////////////////');
+
+console.log(' ');
+console.log('-----------------------------------------------------------');
+console.log(' ');
+
+
+console.log('Игровые обозначения:');
+console.log(' ');
+console.log('\x1b[31m\u21AF\x1b[0m', ' - попадание');
+console.log('\x1b[33m\u2716\x1b[0m', ' - промах');
+console.log('\x1b[35m\u0394\x1b[0m', ' - Ваш корабль');
+console.log('\x1b[36m\u2248\x1b[0m', ' - морская волна ("туман войны")');
+
+
+console.log(' ');
+console.log('-----------------------------------------------------------');
+console.log(' ');
+
+
 const createGrid = (size) => {
   const grid = [];
   for (let i = 0; i < size; i += 1) {
     grid[i] = [];
     for (let j = 0; j < size; j += 1) {
-      grid[i][j] = '-';
+      grid[i][j] = '\x1b[36m\u2248\x1b[0m';                // vladybarvy - change symbol "-"
     }
   }
 
@@ -30,8 +58,8 @@ const printGrid = (grid, isEnemy = false) => {
   for (let i = 0; i < grid.length; i += 1) {
     let rowStr = `${i} `;
     for (const cell of grid[i]) {
-      if (isEnemy && cell === 'O') {
-        rowStr += '- ';
+      if (isEnemy && cell === '\x1b[35m\u0394\x1b[0m') {    // vladybarvy - change symbol "O"
+        rowStr += '\x1b[36m\u2248\x1b[0m ';                 // vladybarvy - change symbol "- "
       } else {
         rowStr += `${cell} `;
       }
@@ -60,11 +88,11 @@ const placeRandomCharacter = (character, grid, max) => {
 };
 
 const attack = (x, y, grid) => {
-  if (grid[y][x] === 'O') {
-    grid[y][x] = '!';
+  if (grid[y][x] === '\x1b[35m\u0394\x1b[0m') {              // vladybarvy - change symbol "O"
+    grid[y][x] = '\x1b[31m\u21AF\x1b[0m';                    // vladybarvy - change symbol "!"     
     return true;
-  } else if (grid[y][x] === '-') {
-    grid[y][x] = 'x';
+  } else if (grid[y][x] === '\x1b[36m\u2248\x1b[0m') {       // vladybarvy - change symbol "-"
+    grid[y][x] = '\x1b[33m\u2716\x1b[0m';                    //  vladybarvy - change symbol "x"
     return false;
   } else {
     return false;
@@ -88,7 +116,8 @@ const allowedCoordinates = Array.from({length: gridSize}, (_, index) => index);
 
 for (let i = 1; i <= myShips; i += 1) {
   if (i === 1) {
-    console.log('Ваши корабли:');
+    console.log('Ваши корабли:');   
+    
     printGrid(myGrid);
   }
   let x = readlineSync.question(`Введите координату от 0 до ${gridSize - 1} по оси X для ${i}-го корабля: `, { limit: allowedCoordinates, limitMessage: 'Введено неверное значение. Повторите ввод: ' });
@@ -100,8 +129,8 @@ for (let i = 1; i <= myShips; i += 1) {
     let y = readlineSync.question('Введенная координата выходит за поле боя. Повторите ввод: ');
   } */
   console.clear();
-  placeCharacter(x, y, 'O', myGrid);
-  placeRandomCharacter('O', enemyGrid, gridSize);
+  placeCharacter(x, y, '\x1b[35m\u0394\x1b[0m', myGrid);                    // vladybarvy - change symbol "O"
+  placeRandomCharacter('\x1b[35m\u0394\x1b[0m', enemyGrid, gridSize);       // vladybarvy - change symbol "O"
 
   console.log('Ваши корабли:');
   printGrid(myGrid);
@@ -143,3 +172,6 @@ if (myShips < enemyShips) {
 } else {
   console.log('Победа!');
 }
+
+// изменение цвета конкретной строки, выводимой в консоль
+//console.log('\x1b[36m%s\x1b[0m', 'I am cyan');  //cyan    // vladybarvy experiment
