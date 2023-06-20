@@ -77,27 +77,29 @@ const drawBreak = () => {
 
 
 // Переменные
-const gridSize = readlineSync.question('Введите размер поля боя: ');
+const gridSize = readlineSync.question('Введите размер поля боя от 4 до 10: ', { limit: [4, 5, 6, 7, 8, 9, 10], limitMessage: 'Введено неверное значение. Повторите ввод: ' });
 const myGrid = createGrid(gridSize);
 const enemyGrid = createGrid(gridSize);
 const shipsCount = readlineSync.question('Введите количество кораблей: ');
 let myShips = shipsCount;
 let enemyShips = shipsCount;
 const enemyLocation = {};
+const allowedCoordinates = Array.from({length: gridSize}, (_, index) => index);
 
 for (let i = 1; i <= myShips; i += 1) {
   if (i === 1) {
     console.log('Ваши корабли:');
     printGrid(myGrid);
   }
-  let x = readlineSync.question(`Введите координату по оси X для ${i}-го корабля: `);
-  if (x >= gridSize) {
+  let x = readlineSync.question(`Введите координату от 0 до ${gridSize - 1} по оси X для ${i}-го корабля: `, { limit: allowedCoordinates, limitMessage: 'Введено неверное значение. Повторите ввод: ' });
+  /* if (x >= gridSize) {
     let x = readlineSync.question('Введенная координата выходит за поле боя. Повторите ввод: ');
-  }
-  let y = readlineSync.question(`Введите координату по оси Y для ${i}-го корабля: `);
-  if (y >= gridSize) {
+  } */
+  let y = readlineSync.question(`Введите координату от 0 до ${gridSize - 1} по оси Y для ${i}-го корабля: `, { limit: allowedCoordinates, limitMessage: 'Введено неверное значение. Повторите ввод: ' });
+  /* if (y >= gridSize) {
     let y = readlineSync.question('Введенная координата выходит за поле боя. Повторите ввод: ');
-  }
+  } */
+  console.clear();
   placeCharacter(x, y, 'O', myGrid);
   placeRandomCharacter('O', enemyGrid, gridSize);
 
@@ -109,14 +111,15 @@ for (let i = 1; i <= myShips; i += 1) {
 while (enemyShips > 0 && myShips > 0) {
   console.log('Делайте выстрел');
   printGrid(enemyGrid, true);
-  let x = readlineSync.question('Введите координату X для выстрела: ');
-  if (x >= gridSize) {
+  let x = readlineSync.question(`Введите координату от 0 до ${gridSize - 1} по оси X для выстрела: `, { limit: allowedCoordinates, limitMessage: 'Введено неверное значение. Повторите ввод: ' });
+  /* if (x >= gridSize) {
     let x = readlineSync.question('Введенная координата выходит за поле боя. Повторите ввод: ');
-  }
-  let y = readlineSync.question('Введите координату Y для выстрела: ');
-  if (y >= gridSize) {
-    let y = readlineSync.question('Введенная координата выходит за поле боя. Повторите ввод: ')
-  }
+  } */
+  let y = readlineSync.question(`Введите координату от 0 до ${gridSize - 1} по оси Y для выстрела: `, { limit: allowedCoordinates, limitMessage: 'Введено неверное значение. Повторите ввод: ' });
+  /* if (y >= gridSize) {
+    let y = readlineSync.question('Введенная координата выходит за поле боя. Повторите ввод: ');
+  } */
+  console.clear();
 
   if (attack(x, y, enemyGrid)) {
     enemyShips -= 1;
