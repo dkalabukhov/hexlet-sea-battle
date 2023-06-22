@@ -7,7 +7,7 @@ const seaBattleGame = () => {
     log(Log.bg.blue, '///////////////////////////////////////////////////////////');
     log(Log.bg.blue, '//////////////// М О Р С К О Й   Б О Й ////////////////////');
     log(Log.bg.blue, '///////////////////////////////////////////////////////////');
-    log(Log.bg.blue, '///////////////////// версия 0.41 /////////////////////////');
+    log(Log.bg.blue, '///////////////////// версия 0.5 /////////////////////////');
     log(Log.bg.blue, '///////////////////////////////////////////////////////////');
     
     console.log(' ');
@@ -46,9 +46,11 @@ const seaBattleGame = () => {
     for (let i = 1; i <= myShips; i += 1) {
         if (i === 1) {
             console.log('Ваши корабли:');   
-    
             printGrid(myGrid);
         }
+
+
+
     let x = readlineSync.question(`Введите координату от 0 до ${gridSize - 1} по оси X для ${i}-го корабля: `, { limit: allowedCoordinates, limitMessage: 'Введено неверное значение. Повторите ввод: ' });
   /* if (x >= gridSize) {
     let x = readlineSync.question('Введенная координата выходит за поле боя. Повторите ввод: ');
@@ -57,6 +59,8 @@ const seaBattleGame = () => {
   /* if (y >= gridSize) {
     let y = readlineSync.question('Введенная координата выходит за поле боя. Повторите ввод: ');
   } */
+
+
     console.clear();
     placeCharacter(x, y, '\x1b[35m\u0394\x1b[0m', myGrid);                    // vladybarvy - change symbol "O"
     placeRandomCharacter('\x1b[35m\u0394\x1b[0m', enemyGrid, gridSize);       // vladybarvy - change symbol "O"
@@ -110,11 +114,13 @@ console.log(' ');
         console.log('-----------------------------------------------------------');
         console.log(' ');
 
-        console.log('Корабли противника');
+        console.log('Попадание по кораблям противника');
         printGrid(enemyGrid, true);
-        console.log('Ваши корабли');
+        console.log(' ');
+        console.log('Попадание по Вашим кораблям');
         printGrid(myGrid);
         drawBreak();
+        console.log(' ');
     }
 
     if (myShips < enemyShips) {
