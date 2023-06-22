@@ -18,7 +18,7 @@ Game designations:\
 &#x0394; - player's ship\
 &#x2248; - sea wave ("fog of war")
 
-Victory conditions: who will destroy all enemy ships first.
+Victory condition: the player must be the first to destroy all enemy ships.
 
 ## How to start playing sea-battle
 ```sh
