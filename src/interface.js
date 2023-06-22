@@ -69,7 +69,7 @@ const createGrid = (size) => {
   };
   
   const drawBreak = () => {
-    console.log('-----------------------------');
+    console.log('\n-----------------------------------------------------------\n');
   };
 
   const Log = {
@@ -110,4 +110,12 @@ const createGrid = (size) => {
     console.log(`${color}%s${Log.reset}`, text);
   };
 
-  export { createGrid, printGrid, placeCharacter, getRandomInt, placeRandomCharacter, attack, drawBreak, Log, log };
+  const gameRules = () => {
+    console.log('Игровые обозначения:');
+    console.log('\x1b[31m\u21AF\x1b[0m', ' - попадание');
+    console.log('\x1b[33m\u2716\x1b[0m', ' - промах');
+    console.log('\x1b[35m\u0394\x1b[0m', ' - Ваш корабль');
+    console.log('\x1b[36m\u2248\x1b[0m', ' - морская волна ("туман войны")');
+  };
+
+  export { createGrid, printGrid, placeCharacter, getRandomInt, placeRandomCharacter, attack, drawBreak, Log, log, gameRules };
