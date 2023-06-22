@@ -1,4 +1,5 @@
 import readlineSync from 'readline-sync';
+import { exec } from 'child_process';
 import { createGrid, printGrid, placeCharacter, getRandomInt, placeRandomCharacter, attack, drawBreak, Log, log } from './interface.js';
 
 
@@ -26,6 +27,9 @@ const seaBattleGame = () => {
     console.log('-----------------------------------------------------------');
     console.log(' ');
 
+    // Музыка
+
+    exec('cvlc src/Pirate.mp3 --play-and-exit', () => { });
 
     // Переменные
     const gridSize = readlineSync.question('Введите размер поля боя от 4 до 10: ', { limit: [4, 5, 6, 7, 8, 9, 10], limitMessage: 'Введено неверное значение. Повторите ввод: ' });
