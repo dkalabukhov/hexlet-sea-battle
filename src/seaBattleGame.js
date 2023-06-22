@@ -8,7 +8,7 @@ const seaBattleGame = () => {
     log(Log.bg.blue, '///////////////////////////////////////////////////////////');
     log(Log.bg.blue, '//////////////// М О Р С К О Й   Б О Й ////////////////////');
     log(Log.bg.blue, '///////////////////////////////////////////////////////////');
-    log(Log.bg.blue, '///////////////////// версия 0.9 /////////////////////////');
+    log(Log.bg.blue, '///////////////////// версия 0.50 /////////////////////////');
     log(Log.bg.blue, '///////////////////////////////////////////////////////////');
     
     console.log(' ');
@@ -30,6 +30,7 @@ const seaBattleGame = () => {
     // Музыка
 
     exec('cvlc src/Pirate.mp3 --play-and-exit', () => { });
+    exec('/Applications/VLC.app/Contents/MacOS/VLC -I rc src/Pirate.mp3 --play-and-exit', () => { });
 
     // Переменные
     const gridSize = readlineSync.question('Введите размер поля боя от 4 до 10: ', { limit: [4, 5, 6, 7, 8, 9, 10], limitMessage: 'Введено неверное значение. Повторите ввод: ' });
