@@ -13,8 +13,8 @@ The game uses single-deck ships (1 ship - 1 cell).\
 The player is also asked to choose the number of ships (no more than 5 is recommended).
 
 Game designations:\
-&#x03DF; - hit\
-&#x0058; - miss\
+&#x21AF; - hit\
+&#x2716; - miss\
 &#x0394; - player's ship\
 &#x2248; - sea wave ("fog of war")
 
