@@ -26,4 +26,4 @@ $ make sea-battle
 ```
 
 ## Playthrough Gameplay
-[![asciicast](https://asciinema.org/a/7UBQ6p029cZ0ESFavu2CdsEvX.svg)]( https://asciinema.org/a/7UBQ6p029cZ0ESFavu2CdsEvX)
+[![asciicast](https://asciinema.org/a/A6h5lym4w4lNCLqn4s3RWMtxI.svg)](https://asciinema.org/a/A6h5lym4w4lNCLqn4s3RWMtxI)
