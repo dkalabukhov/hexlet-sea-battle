@@ -1,14 +1,17 @@
 import readlineSync from 'readline-sync';
 import { exec } from 'child_process';
-import { createGrid, printGrid, placeCharacter, getRandomInt, placeRandomCharacter, attack, drawBreak, Log, log } from './interface.js';
+import {
+  createGrid, printGrid, placeCharacter, getRandomInt, placeRandomCharacter,
+  attack, drawBreak, backgrounds, colourPrint,
+} from './interface.js';
 
 const seaBattleGame = () => {
   console.log(' ');
-  log(Log.bg.blue, '///////////////////////////////////////////////////////////');
-  log(Log.bg.blue, '//////////////// М О Р С К О Й   Б О Й ////////////////////');
-  log(Log.bg.blue, '///////////////////////////////////////////////////////////');
-  log(Log.bg.blue, '///////////////////// версия 0.50 /////////////////////////');
-  log(Log.bg.blue, '///////////////////////////////////////////////////////////');
+  colourPrint(backgrounds.bg.blue, '///////////////////////////////////////////////////////////');
+  colourPrint(backgrounds.bg.blue, '//////////////// М О Р С К О Й   Б О Й ////////////////////');
+  colourPrint(backgrounds.bg.blue, '///////////////////////////////////////////////////////////');
+  colourPrint(backgrounds.bg.blue, '///////////////////// версия 0.50 /////////////////////////');
+  colourPrint(backgrounds.bg.blue, '///////////////////////////////////////////////////////////');
 
   drawBreak();
 
@@ -32,8 +35,7 @@ const seaBattleGame = () => {
   const shipsCount = readlineSync.question('Введите количество кораблей: ');
   let myShips = shipsCount;
   let enemyShips = shipsCount;
-  const enemyLocation = {};
-  const allowedCoordinates = Array.from({length: gridSize}, (_, index) => index);
+  const allowedCoordinates = Array.from({ length: gridSize }, (_, index) => index);
 
   drawBreak();
 
@@ -47,8 +49,8 @@ const seaBattleGame = () => {
     const y = readlineSync.question(`Введите координату от 0 до ${gridSize - 1} по оси Y для ${i}-го корабля: `, { limit: allowedCoordinates, limitMessage: 'Введено неверное значение. Повторите ввод: ' });
 
     console.clear();
-    placeCharacter(x, y, '\x1b[35m\u0394\x1b[0m', myGrid);                    // vladybarvy - change symbol "O"
-    placeRandomCharacter('\x1b[35m\u0394\x1b[0m', enemyGrid, gridSize);       // vladybarvy - change symbol "O"
+    placeCharacter(x, y, '\x1b[35m\u0394\x1b[0m', myGrid);
+    placeRandomCharacter('\x1b[35m\u0394\x1b[0m', enemyGrid, gridSize);
 
     drawBreak();
 
@@ -89,7 +91,7 @@ const seaBattleGame = () => {
     printGrid(myGrid);
     drawBreak();
     console.log(' ');
-}
+  }
 
   if (myShips < enemyShips) {
     console.log('Вы проиграли!');
