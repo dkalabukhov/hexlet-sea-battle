@@ -67,7 +67,7 @@ const attack = (x, y, grid) => {
   return false;
 };
 
-const drawBreak = () => {
+const drawSeparatingLine = () => {
   console.log('\n-----------------------------------------------------------\n');
 };
 
@@ -109,7 +109,7 @@ const log = (color, text) => {
   console.log(`${color}%s${Log.reset}`, text);
 };
 
-const gameRules = () => {
+const showGameRules = () => {
   console.log('Игровые обозначения:');
   console.log('\x1b[31m\u21AF\x1b[0m', ' - попадание');
   console.log('\x1b[33m\u2716\x1b[0m', ' - промах');
@@ -117,8 +117,18 @@ const gameRules = () => {
   console.log('\x1b[36m\u2248\x1b[0m', ' - морская волна ("туман войны")');
 };
 
+const showSeaBattleLogo = () => {
+  console.clear();
+  log(Log.bg.blue, '///////////////////////////////////////////////////////////');
+  log(Log.bg.blue, '//////////////// М О Р С К О Й   Б О Й ////////////////////');
+  log(Log.bg.blue, '///////////////////////////////////////////////////////////');
+  log(Log.bg.blue, '///////////////////// версия 0.51 /////////////////////////');
+  log(Log.bg.blue, '///////////////////////////////////////////////////////////');
+};
+
 export {
   createGrid, printGrid, placeCharacter,
   getRandomInt, placeRandomCharacter, attack,
-  drawBreak, Log, log, gameRules,
+  drawSeparatingLine, Log, log, showGameRules,
+  showSeaBattleLogo,
 };

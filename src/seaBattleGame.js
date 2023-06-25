@@ -3,24 +3,20 @@ import { exec } from 'child_process';
 import {
   createGrid, printGrid, placeCharacter,
   getRandomInt, placeRandomCharacter, attack,
-  drawBreak, Log, log, gameRules,
+  drawSeparatingLine, showGameRules,
+  showSeaBattleLogo,
 } from './interface.js';
 
 const seaBattleGame = () => {
-  console.clear();
-  log(Log.bg.blue, '///////////////////////////////////////////////////////////');
-  log(Log.bg.blue, '//////////////// М О Р С К О Й   Б О Й ////////////////////');
-  log(Log.bg.blue, '///////////////////////////////////////////////////////////');
-  log(Log.bg.blue, '///////////////////// версия 0.51 /////////////////////////');
-  log(Log.bg.blue, '///////////////////////////////////////////////////////////');
-  drawBreak();
-  gameRules();
-  drawBreak();
+  showSeaBattleLogo();
+  drawSeparatingLine();
+  showGameRules();
+  drawSeparatingLine();
 
   // Музыка
 
-  exec('cvlc src/Pirate.mp3 --play-and-exit', () => { });
-  exec('/Applications/VLC.app/Contents/MacOS/VLC -I rc src/Pirate.mp3 --play-and-exit', () => { });
+  exec('cvlc asserts/Pirate.mp3 --play-and-exit', () => { });
+  exec('/Applications/VLC.app/Contents/MacOS/VLC -I rc asserts/Pirate.mp3 --play-and-exit', () => { });
 
   // Переменные
   const gridSize = readlineSync.question('Введите размер поля боя от 4 до 10: ', { limit: [4, 5, 6, 7, 8, 9, 10], limitMessage: 'Введено неверное значение. Повторите ввод: ' });
@@ -29,13 +25,13 @@ const seaBattleGame = () => {
   const shipsCount = readlineSync.question('Введите количество кораблей: ');
   let myShips = shipsCount;
   let enemyShips = shipsCount;
-  // const enemyLocation = {}; not implemented yet
+  // const enemyLocation = {}; TODO (?) not implemented yet
   const allowedCoordinates = Array.from({ length: gridSize }, (_, index) => index);
   console.clear();
 
   for (let i = 1; i <= myShips; i += 1) {
     console.clear();
-    gameRules();
+    showGameRules();
     console.log('\nВаши корабли:');
     printGrid(myGrid);
 
@@ -49,7 +45,7 @@ const seaBattleGame = () => {
   // Цикл запуска игры
   while (enemyShips > 0 && myShips > 0) {
     console.clear();
-    gameRules();
+    showGameRules();
     console.log('\nВаши корабли:');
     printGrid(myGrid);
     console.log('\nКорабли противника:');
@@ -66,7 +62,7 @@ const seaBattleGame = () => {
     if (enemyShips > 0 && attack(x, y, myGrid)) {
       myShips -= 1;
     }
-    drawBreak();
+    drawSeparatingLine();
   }
 
   if (myShips < enemyShips) {
