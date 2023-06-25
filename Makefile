@@ -2,4 +2,7 @@ install:
 	npm ci
 
 sea-battle:
-	node index.js
+	node bin/sea-battle.js
+
+lint:
+	npx eslint .

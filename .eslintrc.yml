@@ -8,3 +8,7 @@ parserOptions:
   sourceType: module
 rules:
   no-console: 0
+  import/extensions: 0
+  no-restricted-syntax: 0
+  no-param-reassign: 0
+  no-else-return: 0

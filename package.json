@@ -1,8 +1,11 @@
 {
   "name": "hexlet-sea-battle",
-  "version": "1.0.0",
+  "version": "0.50",
   "description": "Educational project for hexlet.io",
-  "main": "index.js",
+  "main": "./src/seaBattleGames.js",
+  "bin": {
+    "sea-battle": "./bin/sea-battle.js"
+  },
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,6 +24,7 @@
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {
+    "@unicode/unicode-10.0.0": "^1.3.1",
     "eslint": "^8.42.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5"
