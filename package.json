@@ -1,6 +1,6 @@
 {
   "name": "hexlet-sea-battle",
-  "version": "1.0.0",
+  "version": "0.50",
   "description": "Educational project for hexlet.io",
   "main": "./src/seaBattleGames.js",
   "bin": {
