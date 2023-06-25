@@ -1,7 +1,7 @@
 # **Sea Battle Game - light edition**
 Sea Battle Game - is a light console version of the popular game all over the world!
 
-## How to install sea-battle
+## To install sea-battle
 ```sh
 $ git clone git@github.com:dkalabukhov/hexlet-sea-battle.git
 $ make install
@@ -20,7 +20,7 @@ Game designations:\
 
 Victory condition: the player must be the first to destroy all enemy ships.
 
-## How to start playing sea-battle
+## To play sea-battle
 ```sh
 $ make sea-battle
 ```
