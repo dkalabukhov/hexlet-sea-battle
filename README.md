@@ -1,3 +1,6 @@
+### Github Actions:
+[![Node CI](https://github.com/dkalabukhov/hexlet-sea-battle/actions/workflows/node-check.yml/badge.svg)](https://github.com/dkalabukhov/hexlet-sea-battle/actions/workflows/node-check.yml)
+
 # **Sea Battle Game - light edition**
 Sea Battle Game - is a light console version of the popular game all over the world!
 
@@ -26,4 +29,4 @@ $ make sea-battle
 ```
 
 ## Playthrough Gameplay
-[![asciicast](https://asciinema.org/a/7UBQ6p029cZ0ESFavu2CdsEvX.svg)]( https://asciinema.org/a/7UBQ6p029cZ0ESFavu2CdsEvX)
+[![asciicast](https://asciinema.org/a/BcUPp8WtOWVT4TKV4wmN40wu9.svg)]( https://asciinema.org/a/BcUPp8WtOWVT4TKV4wmN40wu9)
